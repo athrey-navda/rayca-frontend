@@ -1,3 +1,26 @@
+This is made for Rayca company as per the requirement for the frontend development.
+
+TASK A: FRONT-END DESIGN
+Building an Interface
+We are requesing that you precisely imitate the UI demonstrated in the image atached to this file. Your
+task is to replicate this design as accurately as possible.
+Instructions:
+
+1. Review the atached image to understand the desired UI elements.
+2. Use Next.js to recreate the UI and interaction.
+3. Aim for pixel-perfect precision in replicating the design seen in the provided sample design.
+4. Encourage you to consider details such as using animations, transions, and responsiveness.
+5. Once you have completed the task, provide a live demo of your implementation. You can host it
+   on a platform of your choice. Providing a deployed version of your code is necessary for
+   demonstrating.
+6. You must also share your code for a more comprehensive evaluation.
+
+Task Delivery
+ Link to live demo
+ Code GitHub repository
+
+Step 1:
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
