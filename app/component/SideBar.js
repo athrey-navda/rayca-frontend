@@ -111,7 +111,7 @@ export default function Sidebar() {
                 </div>
               </div>
               {menu?.alert && (
-                <div className="flex items-center">
+                <div className={`flex items-center ${!open && "hidden"}`}>
                   <div className="flex w-5 h-5 bg-blue-500 rounded-full justify-center items-center">
                     {menu?.alert}
                   </div>
@@ -122,33 +122,47 @@ export default function Sidebar() {
         </div>
       </div>
 
-      <div className="flex justify-between my-4 text-black dark:text-gray-400 font-bold">
-        <div className="uppercase text-xs">File Browser</div>
-        <div>
-          <CiMenuKebab className="h-3" />
+      <div
+        className={`whitespace-pre duration-500 ${
+          !open && "opacity-0 translate-x-28 overflow-hidden"
+        }`}
+      >
+        <div className="flex justify-between my-4 text-black dark:text-gray-400 font-bold">
+          <div className="uppercase text-xs">File Browser</div>
+          <div>
+            <CiMenuKebab className="h-3" />
+          </div>
         </div>
-      </div>
-      <div className="flex items-center text-sm gap-3.5 font-medium p-2 hover:bg-gray-800 rounded-md">
-        <div className="flex items-center">
-          <MdArrowForwardIos className="h-3 mr-1" />
-          <span className="ml-2">Folders</span>
+        <div className="flex items-center text-sm gap-3.5 font-medium p-2 hover:bg-gray-800 rounded-md">
+          <div className="flex items-center">
+            <MdArrowForwardIos className="h-3 mr-1" />
+            <span className="ml-2">Folders</span>
+          </div>
         </div>
       </div>
 
       <div className="mt-auto mb-4">
-        <div className="bg-zinc-700 p-4 rounded-xl">
-          <div className="flex justify-between mb-3">
-            <div className="text-sm">Storage</div>
-            <div className="underline underline-offset-1 text-sm">Upgrade</div>
-          </div>
-          <div className="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-500">
-            <div
-              className="bg-gray-200 h-2.5 rounded-full"
-              style={{ width: "92%" }}
-            ></div>
-          </div>
-          <div className="uppercase text-xs text-black dark:text-gray-400 mt-2">
-            9.2GB of 10 GB used
+        <div
+          className={`whitespace-pre duration-500 ${
+            !open && "opacity-0 translate-x-28 overflow-hidden"
+          }`}
+        >
+          <div className="bg-zinc-700 p-4 rounded-xl">
+            <div className="flex justify-between mb-3">
+              <div className="text-sm">Storage</div>
+              <div className="underline underline-offset-1 text-sm">
+                Upgrade
+              </div>
+            </div>
+            <div className="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-500">
+              <div
+                className="bg-gray-200 h-2.5 rounded-full"
+                style={{ width: "92%" }}
+              ></div>
+            </div>
+            <div className="uppercase text-xs text-black dark:text-gray-400 mt-2">
+              9.2GB of 10 GB used
+            </div>
           </div>
         </div>
       </div>
