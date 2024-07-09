@@ -14,16 +14,63 @@ import { BiPieChart } from "react-icons/bi";
 import { CiMenuKebab } from "react-icons/ci";
 
 export default function Sidebar() {
+  const [currentNav, setCurrentNav] = useState("Settings");
+
   const menus = [
-    { name: "Home", link: "/", icon: RiHomeSmile2Line },
-    { name: "All Files", link: "/", icon: BsFolder },
-    { name: "Private Files", link: "/", icon: PiFolderLock },
-    { name: "Shared with me", link: "/", icon: TbUsersPlus },
-    { name: "Delete Files", link: "/", icon: RiDeleteBin6Line },
-    { name: "Design", link: "/", icon: BiPieChart },
-    { name: "Notification", link: "/", icon: PiNotificationBold, alert: 8 },
-    { name: "Settings", link: "/settings", icon: MdOutlineSettings },
+    {
+      name: "Home",
+      link: "#",
+      icon: RiHomeSmile2Line,
+      current: currentNav === "Home",
+    },
+    {
+      name: "All Files",
+      link: "/",
+      icon: BsFolder,
+      current: currentNav === "All Files",
+    },
+    {
+      name: "Private Files",
+      link: "/",
+      icon: PiFolderLock,
+      current: currentNav === "Private Files",
+    },
+    {
+      name: "Shared with me",
+      link: "/",
+      icon: TbUsersPlus,
+      current: currentNav === "Shared with me",
+    },
+    {
+      name: "Delete Files",
+      link: "/",
+      icon: RiDeleteBin6Line,
+      current: currentNav === "Delete Files",
+    },
+    {
+      name: "Design",
+      link: "/",
+      icon: BiPieChart,
+      current: currentNav === "Design",
+    },
+    {
+      name: "Notification",
+      link: "/",
+      icon: PiNotificationBold,
+      alert: 8,
+      current: currentNav === "Notification",
+    },
+    {
+      name: "Settings",
+      link: "/settings",
+      icon: MdOutlineSettings,
+      current: currentNav === "Settings",
+    },
   ];
+
+  const handleNavClick = (name) => {
+    setCurrentNav(name);
+  };
 
   const [open, setOpen] = useState(true);
   const { setTheme, resolvedTheme } = useTheme();
@@ -113,11 +160,12 @@ export default function Sidebar() {
             <Link
               href={menu.link}
               key={i}
-              className={`group flex items-center justify-between text-sm gap-3.5 font-medium p-2 hover:bg-gray-800 rounded-md ${
-                router.pathname === menu.link
-                  ? "bg-gray-800 text-white"
+              className={`group flex items-center justify-between text-sm gap-3.5 font-medium p-2 hover:bg-gray-700 rounded-md ${
+                currentNav === menu.name
+                  ? "bg-gray-500 text-white"
                   : "text-black dark:text-white"
               }`}
+              onClick={() => handleNavClick(menu.name)}
             >
               <div className="flex items-center gap-3.5">
                 <div>{React.createElement(menu?.icon, { size: "20" })}</div>
