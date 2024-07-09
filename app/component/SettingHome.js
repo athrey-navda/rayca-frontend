@@ -12,6 +12,7 @@ import Security from "./UI/Security";
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
+
 export default function SettingHome() {
   const { resolvedTheme } = useTheme();
   const [currentNav, setCurrentNav] = useState("Security");
@@ -67,7 +68,7 @@ export default function SettingHome() {
                       required
                       placeholder="Search"
                       autoComplete="off"
-                      className="block w-full pl-10 pr-3 py-1 rounded-md border-0  bg-white/5 text-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6"
+                      className="block w-full pl-10 pr-3 py-1 rounded-md border-0 bg-white/5 text-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6"
                     />
                   </div>
                 </div>
@@ -111,7 +112,7 @@ export default function SettingHome() {
                           width={20}
                           height={20}
                         />
-                        <div className="absolute bottom-0 right-2  rounded-full bg-blue-500 flex items-center justify-center">
+                        <div className="absolute bottom-0 right-2 rounded-full bg-blue-500 flex items-center justify-center">
                           <MdOutlineVerified className="text-white" size={14} />
                         </div>
                       </div>
@@ -143,7 +144,7 @@ export default function SettingHome() {
               <div className="lg:hidden relative mx-auto overflow-hidden flex justify-start">
                 <select
                   aria-label="Navigation"
-                  onChange={handleNavClick}
+                  onChange={(e) => handleNavClick(e.target.value)}
                   className="flex appearance-none bg-gray-200 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 text-gray-800 dark:text-white py-2 px-4 pr-8 rounded-md shadow-sm focus:outline-none focus:bg-white focus:border-gray-500 sm:text-sm"
                 >
                   {navigation.map((item) => (
@@ -175,7 +176,7 @@ export default function SettingHome() {
                     href={item.href}
                     aria-current={item.current ? "page" : undefined}
                     className={classNames(
-                      item.current === true
+                      item.current
                         ? "bg-white text-black dark:bg-zinc-800 dark:text-white"
                         : "text-gray-600 dark:text-gray-400 hover:bg-gray-700 hover:text-white",
                       "rounded-md px-3 py-2 text-sm font-medium"
@@ -189,7 +190,13 @@ export default function SettingHome() {
             </div>
           </div>
           <div>
-            <Security />
+            {currentNav === "Security" ? (
+              <Security />
+            ) : (
+              <div className="flex items-center justify-center text-2xl text-black dark:text-white">
+                {currentNav} component
+              </div>
+            )}
           </div>
         </main>
       </div>

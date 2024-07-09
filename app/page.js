@@ -6,6 +6,7 @@ import SettingHome from "./component/SettingHome";
 
 const Home = () => {
   const [currentComponent, setCurrentComponent] = useState("Settings");
+  const [initialMainComponent, setInitialMainComponent] = useState("Security");
 
   const renderComponent = () => {
     switch (currentComponent) {
@@ -52,7 +53,12 @@ const Home = () => {
           </div>
         );
       case "Settings":
-        return <SettingHome />;
+        return (
+          <SettingHome
+            initialMainComponent={initialMainComponent}
+            setInitialMainComponent={setInitialMainComponent}
+          />
+        );
 
       default:
         return <Error />;
