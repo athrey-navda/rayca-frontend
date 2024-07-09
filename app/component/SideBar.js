@@ -62,7 +62,7 @@ export default function Sidebar() {
     },
     {
       name: "Settings",
-      link: "/settings",
+      link: "/",
       icon: MdOutlineSettings,
       current: currentNav === "Settings",
     },
