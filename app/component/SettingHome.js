@@ -5,21 +5,14 @@ import Image from "next/image";
 import { useState } from "react";
 import { BiPlus, BiSearch } from "react-icons/bi";
 import { MdOutlineVerified } from "react-icons/md";
-import { FaAngleDown } from "react-icons/fa";
 import Settings from "./UI/Settings";
 import ThemeSwitch from "./ThemeSwitcher";
-
-const userNavigation = [
-  { name: "Your Profile", href: "#" },
-  { name: "Settings", href: "#" },
-  { name: "Sign out", href: "#" },
-];
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 export default function SettingHome() {
-  const { setTheme, resolvedTheme } = useTheme();
+  const { resolvedTheme } = useTheme();
   const [currentNav, setCurrentNav] = useState("Security");
 
   const navigation = [
