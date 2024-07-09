@@ -66,7 +66,7 @@ export default function Settings() {
             <div>
               <button
                 type="button"
-                className="text-sm relative rounded-md px-3 py-1 bg-zinc-800 border border-gray-500 text-gray-600 dark:text-gray-300 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
+                className="text-sm relative rounded-md px-3 py-1 bg-zinc-800 border border-gray-500 text-gray-200 dark:text-gray-300 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
               >
                 <span className="flex">
                   <span className="text-md">Dismiss</span>
@@ -76,7 +76,7 @@ export default function Settings() {
             <div>
               <button
                 type="button"
-                className="text-sm relative rounded-md px-2 py-1 text-md bg-blue-500 font-bold text-gray-600 dark:text-gray-200 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
+                className="text-sm relative rounded-md px-2 py-1 text-md bg-blue-500 font-bold text-white dark:text-gray-200 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
               >
                 <div className="my-0.5">Review Security</div>
               </button>
@@ -116,7 +116,7 @@ export default function Settings() {
             <div className="my-2">
               <button
                 type="button"
-                className="relative rounded-md px-3 py-1 bg-zinc-800 border border-gray-500 text-gray-600 dark:text-gray-300 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
+                className="relative rounded-md px-3 py-1 bg-zinc-800 border border-gray-500 text-gray-200 dark:text-gray-300 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
               >
                 <span className="flex">
                   <span className="text-sm">Edit</span>
@@ -163,7 +163,7 @@ export default function Settings() {
             <div className="my-2">
               <button
                 type="button"
-                className="relative rounded-md px-3 py-1 bg-zinc-800 border border-gray-500 text-gray-600 dark:text-gray-300 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
+                className="relative rounded-md px-3 py-1 bg-zinc-800 border border-gray-500 text-gray-200 dark:text-gray-300 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
               >
                 <span className="flex">
                   <span className="text-sm">Edit</span>

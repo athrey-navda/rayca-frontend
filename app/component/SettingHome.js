@@ -7,6 +7,7 @@ import { BiPlus, BiSearch } from "react-icons/bi";
 import { MdOutlineVerified } from "react-icons/md";
 import { FaAngleDown } from "react-icons/fa";
 import Settings from "./UI/Settings";
+import ThemeSwitch from "./ThemeSwitcher";
 
 const userNavigation = [
   { name: "Your Profile", href: "#" },
@@ -47,14 +48,14 @@ export default function SettingHome() {
           <div className="ml-4">
             <div className="flex flex-col md:flex-row items-start justify-between text-black dark:text-white">
               <div className="flex items-center mt-2 md:mb-0">
-                <div className="shadow">
+                <div className="">
                   <div className="mx-auto max-w-7xl">
                     <span className="text-2xl font-bold">Mia de Silva</span>
                   </div>
                 </div>
               </div>
-              <div className="flex flex-col md:flex-row items-center gap-4">
-                <div className="flex max-w-md gap-x-4 items-center mb-4 md:mb-0">
+              <div className="flex flex-col md:flex-row items-center gap-4 ">
+                <div className="flex max-w-md gap-x-4 items-center mb-4 md:mb-0 shadow">
                   <label htmlFor="search" className="sr-only">
                     Search
                   </label>
@@ -72,14 +73,14 @@ export default function SettingHome() {
                       required
                       placeholder="Search"
                       autoComplete="off"
-                      className="block w-full pl-10 pr-3 py-1 rounded-md border-0 bg-white/5 text-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6"
+                      className="block w-full pl-10 pr-3 py-1 rounded-md border-0  bg-white/5 text-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6"
                     />
                   </div>
                 </div>
                 <div className="mb-4 md:mb-0">
                   <button
                     type="button"
-                    className="relative rounded-md px-3 bg-zinc-800 text-gray-600 dark:text-gray-300 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
+                    className="relative rounded-md px-3 bg-zinc-800 text-gray-200 dark:text-gray-300 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
                   >
                     <span className="flex my-1">
                       <span className="flex items-center justify-center mx-2">
@@ -94,7 +95,7 @@ export default function SettingHome() {
                 <div className="mb-4 md:mb-0">
                   <button
                     type="button"
-                    className="relative rounded-md px-3 text-md bg-blue-500 font-bold text-gray-600 dark:text-gray-200 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
+                    className="relative rounded-md px-3 text-md bg-blue-500 font-bold text-white dark:text-gray-200 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
                   >
                     <div className="my-1 text-sm">Upgrade</div>
                   </button>
@@ -124,15 +125,14 @@ export default function SettingHome() {
                   </div>
                   <MenuItems
                     as="div"
-                    className="absolute right-0 mt-2 w-48 origin-top-right rounded-md shadow-lg ring-1 ring-gray-300 ring-opacity-4 transition focus:outline-none"
+                    className="absolute right-1 mt-2 w-48 origin-top-right rounded-md shadow-lg ring-1 ring-gray-300 ring-opacity-4 transition focus:outline-none"
                   >
-                    {userNavigation.map((item) => (
-                      <MenuItem key={item.name}>
-                        <a href={item.href} className="block px-4 py-2 text-sm">
-                          {item.name}
-                        </a>
-                      </MenuItem>
-                    ))}
+                    <MenuItem
+                      as="div"
+                      className="flex justify-center mx-2 my-2 hover:dark:bg-white hover:text-black hover:dark:text-white hover:bg-black "
+                    >
+                      <ThemeSwitch className="hover:dark:bg-white hover:text-black hover:dark:text-white hover:bg-black " />
+                    </MenuItem>
                   </MenuItems>
                 </Menu>
               </div>

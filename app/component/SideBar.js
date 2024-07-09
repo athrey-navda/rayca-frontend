@@ -1,5 +1,6 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
 import { HiMenuAlt3 } from "react-icons/hi";
 import { RiDeleteBin6Line, RiHomeSmile2Line } from "react-icons/ri";
 import { TbUsersPlus } from "react-icons/tb";
@@ -17,22 +18,35 @@ export default function Sidebar() {
     { name: "Home", link: "/", icon: RiHomeSmile2Line },
     { name: "All Files", link: "/", icon: BsFolder },
     { name: "Private Files", link: "/", icon: PiFolderLock },
-    {
-      name: "Shared with me",
-      link: "/",
-      icon: TbUsersPlus,
-    },
+    { name: "Shared with me", link: "/", icon: TbUsersPlus },
     { name: "Delete Files", link: "/", icon: RiDeleteBin6Line },
     { name: "Design", link: "/", icon: BiPieChart },
     { name: "Notification", link: "/", icon: PiNotificationBold, alert: 8 },
-    { name: "Settings", link: "/", icon: MdOutlineSettings },
+    { name: "Settings", link: "/settings", icon: MdOutlineSettings },
   ];
+
   const [open, setOpen] = useState(true);
   const { setTheme, resolvedTheme } = useTheme();
+  const router = useRouter();
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth < 1024) {
+        setOpen(false);
+      } else {
+        setOpen(true);
+      }
+    };
+
+    handleResize();
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   return (
     <div
-      className={`bg-white dark:bg-zinc-800 flex min-h-screen flex-col ${
+      className={`bg-white dark:bg-zinc-800 flex min-h-screen flex-col  ${
         open ? "w-72" : "w-16"
       } duration-500 text-gray-100 px-4`}
     >
@@ -45,7 +59,9 @@ export default function Sidebar() {
           <div className="py-3 flex justify-between items-center">
             <div className="flex items-center">
               <a href="/" className="flex items-center">
-                <span className="sr-only">Untitled UI</span>
+                <span className="sr-only text-black dark:text-white">
+                  Untitled UI
+                </span>
                 <Image
                   className="h-auto w-12 rounded"
                   src={
@@ -57,13 +73,15 @@ export default function Sidebar() {
                   width={60}
                   height={60}
                 />
-                <span className="font-bold ml-1">Untitled UI</span>
+                <span className="font-bold ml-1 text-black dark:text-white">
+                  Untitled UI
+                </span>
               </a>
             </div>
 
-            <div className="ml-2 flex items-center">
+            <div className="ml-2 flex items-center text-black dark:text-white">
               <span className="text-sm">v4.0</span>
-              <button className="ml-2">
+              <button className="ml-2 ">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
@@ -86,16 +104,20 @@ export default function Sidebar() {
         <div className="py-3 flex justify-end">
           <HiMenuAlt3
             size={26}
-            className="cursor-pointer"
+            className="cursor-pointer text-black dark:text-gray-500"
             onClick={() => setOpen(!open)}
           />
         </div>
-        <div className="mt-4 flex flex-col gap-2 relative">
+        <div className="mt-4 flex flex-col gap-2 relative text-black dark:text-gray-500">
           {menus?.map((menu, i) => (
             <Link
-              href={`${menu?.link}`}
+              href={menu.link}
               key={i}
-              className={`group flex items-center justify-between text-sm gap-3.5 font-medium p-2 hover:bg-gray-800 rounded-md`}
+              className={`group flex items-center justify-between text-sm gap-3.5 font-medium p-2 hover:bg-gray-800 rounded-md ${
+                router.pathname === menu.link
+                  ? "bg-gray-800 text-white"
+                  : "text-black dark:text-white"
+              }`}
             >
               <div className="flex items-center gap-3.5">
                 <div>{React.createElement(menu?.icon, { size: "20" })}</div>
@@ -112,7 +134,7 @@ export default function Sidebar() {
                 <div
                   className={`${
                     open && "hidden"
-                  } absolute left-48 bg-white font-semibold whitespace-pre text-gray-900 rounded-md drop-shadow-lg px-0 py-0 w-0 overflow-hidden group-hover:px-2 group-hover:py-1 group-hover:left-14 group-hover:duration-300 group-hover:w-fit`}
+                  } absolute left-48 bg-white font-semibold whitespace-pre rounded-md drop-shadow-lg px-0 py-0 w-0 overflow-hidden group-hover:px-2 group-hover:py-1 group-hover:left-14 group-hover:duration-300 group-hover:w-fit`}
                 >
                   {menu?.name}
                 </div>
@@ -141,7 +163,7 @@ export default function Sidebar() {
           </div>
         </div>
         <div className="flex items-center text-sm gap-3.5 font-medium p-2 hover:bg-gray-800 rounded-md">
-          <div className="flex items-center">
+          <div className="flex items-center text-black dark:text-white">
             <MdArrowForwardIos className="h-3 mr-1" />
             <span className="ml-2">Folders</span>
           </div>
@@ -163,11 +185,11 @@ export default function Sidebar() {
             </div>
             <div className="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-500">
               <div
-                className="bg-gray-200 h-2.5 rounded-full"
-                style={{ width: "92%" }}
+                className="bg-blue-600 h-2.5 rounded-full"
+                style={{ width: "45%" }}
               ></div>
             </div>
-            <div className="uppercase text-xs text-black dark:text-gray-400 mt-2">
+            <div className="uppercase text-xs text-gray-200 dark:text-gray-400 mt-2">
               9.2GB of 10 GB used
             </div>
           </div>
