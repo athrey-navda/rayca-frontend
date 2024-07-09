@@ -97,7 +97,7 @@ export default function SettingHome() {
                 </div>
                 <Menu as="div" className="relative">
                   <div>
-                    <MenuButton className="relative flex max-w-xs items-center rounded-full text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
+                    <MenuButton className="relative flex max-w-xs my-2 md:my-0 items-center rounded-full text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
                       <span className="absolute -inset-1.5" />
                       <span className="sr-only">Open user menu</span>
                       <div className="relative">
@@ -120,13 +120,14 @@ export default function SettingHome() {
                   </div>
                   <MenuItems
                     as="div"
-                    className="absolute right-1 mt-2 w-48 origin-top-right rounded-md shadow-lg ring-1 ring-gray-300 ring-opacity-4 transition focus:outline-none"
+                    className="absolute right-1 mt-2 w-48 z-50 origin-top-right rounded-md shadow-lg ring-1 ring-gray-300 ring-opacity-4 transition focus:outline-none bg-black dark:bg-white"
+                    style={{ zIndex: 50 }}
                   >
                     <MenuItem
                       as="div"
-                      className="flex justify-center mx-2 my-2 hover:dark:bg-white hover:text-black hover:dark:text-white hover:bg-black "
+                      className="flex justify-center mx-2 my-2 hover:dark:bg-white hover:text-black hover:dark:text-white hover:bg-black"
                     >
-                      <ThemeSwitch className="hover:dark:bg-white hover:text-black hover:dark:text-white hover:bg-black " />
+                      <ThemeSwitch className="hover:dark:bg-white hover:text-black hover:dark:text-white hover:bg-black" />
                     </MenuItem>
                   </MenuItems>
                 </Menu>
@@ -144,11 +145,16 @@ export default function SettingHome() {
               <div className="lg:hidden relative mx-auto overflow-hidden flex justify-start">
                 <select
                   aria-label="Navigation"
+                  value={currentNav}
                   onChange={(e) => handleNavClick(e.target.value)}
-                  className="flex appearance-none bg-gray-200 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 text-gray-800 dark:text-white py-2 px-4 pr-8 rounded-md shadow-sm focus:outline-none focus:bg-white focus:border-gray-500 sm:text-sm"
+                  className="flex w-full appearance-none bg-gray-200 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 text-gray-800 dark:text-white py-2 px-4 pr-8 rounded-md shadow-sm focus:outline-none focus:bg-white focus:border-gray-500 sm:text-sm"
                 >
                   {navigation.map((item) => (
-                    <option key={item.name} value={item.name}>
+                    <option
+                      key={item.name}
+                      value={item.name}
+                      selected={currentNav === item.name}
+                    >
                       {item.name}
                     </option>
                   ))}

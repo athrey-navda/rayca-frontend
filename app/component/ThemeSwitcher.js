@@ -25,7 +25,7 @@ export default function ThemeSwitch() {
             viewBox="0 0 24 24"
             strokeWidth={1.5}
             stroke="currentColor"
-            className="size-6 text-black hover:dark:text-black hover:text-white dark:text-white"
+            className="size-6 text-white hover:dark:text-white hover:text-black dark:text-black"
           >
             <path
               strokeLinecap="round"
@@ -42,7 +42,7 @@ export default function ThemeSwitch() {
             viewBox="0 0 24 24"
             strokeWidth={1.5}
             stroke="currentColor"
-            className="size-6 text-black hover:dark:text-black hover:text-white dark:text-white"
+            className="size-6 text-white hover:dark:text-white hover:text-black dark:text-black"
           >
             <path
               strokeLinecap="round"
