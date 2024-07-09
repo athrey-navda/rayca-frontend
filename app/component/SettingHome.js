@@ -5,8 +5,9 @@ import Image from "next/image";
 import { useState } from "react";
 import { BiPlus, BiSearch } from "react-icons/bi";
 import { MdOutlineVerified } from "react-icons/md";
-import Settings from "./UI/Settings";
+
 import ThemeSwitch from "./ThemeSwitcher";
+import Security from "./UI/Security";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -188,7 +189,7 @@ export default function SettingHome() {
             </div>
           </div>
           <div>
-            <Settings />
+            <Security />
           </div>
         </main>
       </div>

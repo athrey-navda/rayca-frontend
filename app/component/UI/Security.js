@@ -4,7 +4,7 @@ import { Switch } from "@headlessui/react";
 import DeviceItem from "./DeviceItem";
 import { useState } from "react";
 
-export default function Settings() {
+export default function Security() {
   const [enabled, setEnabled] = useState(true);
   const devices = [
     {

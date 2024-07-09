@@ -1,6 +1,5 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import { useRouter } from "next/navigation";
 import { HiMenuAlt3 } from "react-icons/hi";
 import { RiDeleteBin6Line, RiHomeSmile2Line } from "react-icons/ri";
 import { TbUsersPlus } from "react-icons/tb";
@@ -13,68 +12,20 @@ import { BsFolder } from "react-icons/bs";
 import { BiPieChart } from "react-icons/bi";
 import { CiMenuKebab } from "react-icons/ci";
 
-export default function Sidebar() {
-  const [currentNav, setCurrentNav] = useState("Settings");
-
+export default function Sidebar({ currentComponent, setCurrentComponent }) {
   const menus = [
-    {
-      name: "Home",
-      link: "#",
-      icon: RiHomeSmile2Line,
-      current: currentNav === "Home",
-    },
-    {
-      name: "All Files",
-      link: "/",
-      icon: BsFolder,
-      current: currentNav === "All Files",
-    },
-    {
-      name: "Private Files",
-      link: "/",
-      icon: PiFolderLock,
-      current: currentNav === "Private Files",
-    },
-    {
-      name: "Shared with me",
-      link: "/",
-      icon: TbUsersPlus,
-      current: currentNav === "Shared with me",
-    },
-    {
-      name: "Delete Files",
-      link: "/",
-      icon: RiDeleteBin6Line,
-      current: currentNav === "Delete Files",
-    },
-    {
-      name: "Design",
-      link: "/",
-      icon: BiPieChart,
-      current: currentNav === "Design",
-    },
-    {
-      name: "Notification",
-      link: "/",
-      icon: PiNotificationBold,
-      alert: 8,
-      current: currentNav === "Notification",
-    },
-    {
-      name: "Settings",
-      link: "/",
-      icon: MdOutlineSettings,
-      current: currentNav === "Settings",
-    },
+    { name: "Home", icon: RiHomeSmile2Line },
+    { name: "All Files", icon: BsFolder },
+    { name: "Private Files", icon: PiFolderLock },
+    { name: "Shared with me", icon: TbUsersPlus },
+    { name: "Delete Files", icon: RiDeleteBin6Line },
+    { name: "Design", icon: BiPieChart },
+    { name: "Notification", icon: PiNotificationBold, alert: 8 },
+    { name: "Settings", icon: MdOutlineSettings },
   ];
-
-  const handleNavClick = (name) => {
-    setCurrentNav(name);
-  };
 
   const [open, setOpen] = useState(true);
   const { setTheme, resolvedTheme } = useTheme();
-  const router = useRouter();
 
   useEffect(() => {
     const handleResize = () => {
@@ -86,7 +37,6 @@ export default function Sidebar() {
     };
 
     handleResize();
-
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
@@ -125,7 +75,6 @@ export default function Sidebar() {
                 </span>
               </a>
             </div>
-
             <div className="ml-2 flex items-center text-black dark:text-white">
               <span className="text-sm">v4.0</span>
               <button className="ml-2 ">
@@ -147,7 +96,6 @@ export default function Sidebar() {
             </div>
           </div>
         </div>
-
         <div className="py-3 flex justify-end">
           <HiMenuAlt3
             size={26}
@@ -156,49 +104,45 @@ export default function Sidebar() {
           />
         </div>
         <div className="mt-4 flex flex-col gap-2 relative text-black dark:text-gray-500">
-          {menus?.map((menu, i) => (
-            <Link
-              href={menu.link}
+          {menus.map((menu, i) => (
+            <button
               key={i}
               className={`group flex items-center justify-between text-sm gap-3.5 font-medium p-2 hover:bg-gray-700 rounded-md ${
-                currentNav === menu.name
+                currentComponent === menu.name
                   ? "bg-gray-500 text-white"
                   : "text-black dark:text-white"
               }`}
-              onClick={() => handleNavClick(menu.name)}
+              onClick={() => setCurrentComponent(menu.name)}
             >
               <div className="flex items-center gap-3.5">
-                <div>{React.createElement(menu?.icon, { size: "20" })}</div>
+                <div>{React.createElement(menu.icon, { size: "20" })}</div>
                 <div
-                  style={{
-                    transitionDelay: `${i + 3}00ms`,
-                  }}
+                  style={{ transitionDelay: `${i + 3}00ms` }}
                   className={`whitespace-pre duration-500 ${
                     !open && "opacity-0 translate-x-28 overflow-hidden"
                   }`}
                 >
-                  {menu?.name}
+                  {menu.name}
                 </div>
                 <div
                   className={`${
                     open && "hidden"
                   } absolute left-48 bg-white font-semibold whitespace-pre rounded-md drop-shadow-lg px-0 py-0 w-0 overflow-hidden group-hover:px-2 group-hover:py-1 group-hover:left-14 group-hover:duration-300 group-hover:w-fit`}
                 >
-                  {menu?.name}
+                  {menu.name}
                 </div>
               </div>
-              {menu?.alert && (
+              {menu.alert && (
                 <div className={`flex items-center ${!open && "hidden"}`}>
                   <div className="flex w-5 h-5 bg-blue-500 rounded-full justify-center items-center">
-                    {menu?.alert}
+                    {menu.alert}
                   </div>
                 </div>
               )}
-            </Link>
+            </button>
           ))}
         </div>
       </div>
-
       <div
         className={`whitespace-pre duration-500 ${
           !open && "opacity-0 translate-x-28 overflow-hidden"
@@ -217,7 +161,6 @@ export default function Sidebar() {
           </div>
         </div>
       </div>
-
       <div className="mt-auto mb-8">
         <div
           className={`whitespace-pre duration-500 ${
